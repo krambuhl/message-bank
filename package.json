@@ -5,8 +5,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "zuul -- test/*.js",
-    "local-test": "zuul --local 5400 -- test/*.js"
+    "test": "tape tests/*.js | tap-spec"
   },
   "repository": {
     "type": "git",
@@ -14,7 +13,6 @@
   },
   "devDependencies": {
     "tap-spec": "^2.1.2",
-    "tape": "^3.0.3",
-    "zuul": "^1.16.4"
+    "tape": "^3.0.3"
   }
 }
