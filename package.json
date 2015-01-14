@@ -5,9 +5,26 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "test": "tape tests/*.js"  
+  },
+
+  "testling" : {
+    "files" : "tests/*.js",
+    "browsers" : [
+      "ie/6..latest",
+      "chrome/10","chrome/latest","chrome/canary",
+      "firefox/10","firefox/latest","firefox/nightly",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6", "ipad/6",
+      "android-browser/latest"
+    ]
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:krambuhl/message-bank.git"
+  },
+  "devDependencies": {
+    "tape": "^3.0.3"
   }
 }
