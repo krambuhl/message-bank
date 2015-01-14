@@ -9,10 +9,10 @@ browsers:
   - name: opera
     version: latest
   - name: ie
-    version: 6..latest
+    version: latest
   - name: iphone
-    version: 6..latest
+    version: latest
   - name: ipad
-    version: 6..latest
+    version: latest
   - name: android-browser
     version: latest
