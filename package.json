@@ -5,7 +5,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "tape tests/*.js | tap-spec",
+    "test": "tape tests/*.js", 
+    "ltest": "browserify tests/*.js > test_bundle.js",
     "coverage": "browserify -t coverify --bare ./tests/* | node | coverify"
   },
   "repository": {
@@ -17,5 +18,18 @@
     "coverify": "^1.0.7",
     "tap-spec": "^2.1.2",
     "tape": "^3.0.3"
+  },
+  "testling": {
+    "files": "tests/*.js",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6",
+      "ipad/6",
+      "android-browser/latest"
+    ]
   }
 }
