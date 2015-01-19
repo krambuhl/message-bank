@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "tape tests/*.js", 
-    "ltest": "browserify tests/*.js > test_bundle.js",
+    "ltest": "browserify tests/*.js > tmp/test_bundle.js",
     "coverage": "browserify -t coverify --bare ./tests/* | node | coverify"
   },
   "repository": {
