@@ -1,6 +1,6 @@
-module.exports = Bank;
+module.exports = MessageBank;
 
-function Bank(opts) {
+function MessageBank(opts) {
   this.options = opts = (opts || {});
 
   this._store = {};
@@ -8,6 +8,7 @@ function Bank(opts) {
   this._subscriptions = [];
 
   if (opts.setup) { this.setup(opts.setup); }
+  if (opts.config) { this.config(opts.config); }
 }
 
-Bank.prototype = require('./lib/prototype.js');
+MessageBank.prototype = require('./lib/prototype.js');
