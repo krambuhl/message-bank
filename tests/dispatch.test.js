@@ -1,7 +1,7 @@
 var MsgBank = require('../');
 var test = require('tape');
 
-test('#Bank().dispatch(type, data)', function (t) {
+test('bank.dispatch(type, data)', function (t) {
   t.plan(3);
   var bank = new MsgBank();
   bank.dispatch('TEST', { genre: 'metal' });
@@ -10,7 +10,7 @@ test('#Bank().dispatch(type, data)', function (t) {
   t.deepEqual(bank._store.TEST.options, {});
 });
 
-test('#Bank().dispatch(type, data, options)', function (t) {
+test('bank.dispatch(type, data, options)', function (t) {
   t.plan(3);
   var bank = new MsgBank();
   bank.dispatch('TEST', { genre: 'metal' }, { isTest: true });
@@ -19,7 +19,7 @@ test('#Bank().dispatch(type, data, options)', function (t) {
   t.equal(bank._store.TEST.options.isTest, true);
 });
 
-test('#Bank().dispatch({type, data, options})', function (t) {
+test('bank.dispatch({type, data, options})', function (t) {
   t.plan(3);
   var bank = new MsgBank();
   bank.dispatch({ 
@@ -33,7 +33,7 @@ test('#Bank().dispatch({type, data, options})', function (t) {
   t.equal(bank._store.TEST.options.isTest, true);
 });
 
-test('#Bank().dispatch([{type, data, options}])', function (t) {
+test('bank.dispatch([{type, data, options}])', function (t) {
   t.plan(6);
   var bank = new MsgBank();
   bank.dispatch([{ 

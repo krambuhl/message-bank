@@ -1,7 +1,7 @@
 var MsgBank = require('../');
 var test = require('tape');
 
-test('#Bank().config(type, opt.transform)', function (t) {
+test('bank.config(type, opt.transform)', function (t) {
   var bank = new MsgBank();
   bank.config('TEST', { transform: transform });
 
@@ -15,7 +15,7 @@ test('#Bank().config(type, opt.transform)', function (t) {
   t.equal(bank._store.TEST.data.alt, 110);
 });
 
-test('#Bank().config(config)', function (t) {
+test('bank.config(config)', function (t) {
   var bank = new MsgBank();
   bank.config({ type: 'TEST', transform: transform });
 
@@ -29,7 +29,7 @@ test('#Bank().config(config)', function (t) {
   t.equal(bank._store.TEST.data.alt, 110);
 });
 
-test('#Bank().config([config])', function (t) {
+test('bank.config([config])', function (t) {
   var bank = new MsgBank();
   bank.config([
     { type: 'TEST', transform: transform },

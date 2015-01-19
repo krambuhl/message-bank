@@ -1,7 +1,7 @@
 var MsgBank = require('../');
 var test = require('tape');
 
-test('#Bank({ setup: func })', function (t) {
+test('new Bank({ setup: func })', function (t) {
   t.plan(2);
   var bank = new MsgBank({
     setup: function(opts) {
@@ -11,7 +11,7 @@ test('#Bank({ setup: func })', function (t) {
   });
 });
 
-test('#Bank().setup(func)', function (t) {
+test('bank.setup(func)', function (t) {
   t.plan(1);
   var bank = new MsgBank();
   bank.setup(function(opts) {

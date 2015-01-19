@@ -1,7 +1,7 @@
 var MsgBank = require('../');
 var test = require('tape');
 
-test('#Bank()', function (t) {
+test('new Bank()', function (t) {
   var bank = new MsgBank();
   
   t.plan(3);
