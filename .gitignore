@@ -5,3 +5,4 @@ bower_components
 dist
 tmp
 hidden
+npm-debug.log

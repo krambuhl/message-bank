@@ -5,9 +5,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "test": "tape tests/*.js",
+    "coverage": "browserify -t coverify --bare ./tests/* | node | coverify"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:krambuhl/message-bank.git"
+  },
+  "devDependencies": {
+    "browserify": "^8.1.1",
+    "coverify": "^1.0.7",
+    "tap-spec": "^2.1.2",
+    "tape": "^3.0.3"
   }
 }
