@@ -51,7 +51,7 @@ bank.setup(function() { });
 
 ###Bank().config(type<String>, config<Object>)
 
-Also: **`Bank().config(config<Object>)`** **`Bank().config([config<Object>])`**
+Also: `Bank().config(config<Object>)` `Bank().config([config<Object>])`
 
 Method for configuring how dispatched data is handled for specific dispatch type.  Currently only defines transform config option, but this is a good place to enter custom configuration to be used in a custom parse function.
 
@@ -69,7 +69,7 @@ bank.config('SUPER', {
 ```
 
 ###Bank().dispatch(type<String>, data<Object>, options<Object>)
-Also: **`Bank().dispatch(dispatch<Object>)`** **`Bank().dispatch([dispatch<Object>])`**
+Also: `Bank().dispatch(dispatch<Object>)` `Bank().dispatch([dispatch<Object>])`
 
 Dispatches a payload of data to the MessageBank, any subscriptions matching the payload type will be called.
 
