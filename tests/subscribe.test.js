@@ -52,6 +52,30 @@ test('bank.subscribe(func)', function (t) {
   bank.dispatch('TEST', { genre: 'metal' }, { duper: true });
 });
 
+test('bank.subscribe("ALL", func)', function (t) {
+  var bank = new MsgBank();
+  t.plan(2);
+
+  bank.subscribe('ALL', function(d, o, type) {
+    t.equal(d.genre, 'metal');
+    t.equal(type, 'TEST');
+  });
+
+  bank.dispatch('TEST', { genre: 'metal' });
+});
+
+test('bank.subscribe("*", func)', function (t) {
+  var bank = new MsgBank();
+  t.plan(2);
+
+  bank.subscribe('*', function(d, o, type) {
+    t.equal(d.genre, 'metal');
+    t.equal(type, 'TEST');
+  });
+
+  bank.dispatch('TEST', { genre: 'metal' });
+});
+
 test('bank.subscribe(func) -- multiple dispatch types', function (t) {
   var bank = new MsgBank();
   t.plan(9);
@@ -68,6 +92,21 @@ test('bank.subscribe(func) -- multiple dispatch types', function (t) {
 });
 
 
+test('bank.subscribe(func) -- multiple dispatch types', function (t) {
+  var bank = new MsgBank();
+  t.plan(9);
+
+  bank.dispatch('TEST', { genre: 'metal' }, { duper: 'abc' });
+  bank.dispatch('ALT', { genre: 'rock' }, { duper: '123' });
+
+  bank.subscribe(function(d, o, type) {
+    t.ok(d.genre);
+    t.ok(o.duper);
+    t.ok(type);
+  });
+
+  bank.dispatch('BOOP', { genre: 'robot' }, { duper: 'abc123' });
+});
 
 test('id = bank.subscribe(type, func)', function (t) {
   var bank = new MsgBank();
