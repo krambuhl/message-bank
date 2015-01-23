@@ -5,12 +5,12 @@ Message Bank
 
 Subscribable message bank.  
 
-MessageBank behaves subtly different than a standard message bus. **Subscribing to a message type whem a message of that type has been dispatched previously will fire the callback function immediately.**
+MessageBank behaves subtly different than a standard message bus. **Subscribing to a message type that has been dispatched previously the callback function will fire immediately.**
 
 API
 ===
 
-###MessageBank(options)
+###MessageBank(options:Object)
 
 Creates a new message bank instance with predefined options.
 
@@ -18,7 +18,7 @@ Creates a new message bank instance with predefined options.
 var bank = new MessageBank();
 ```
 
-####options.setup(callback)
+####options.setup(callback:Function)
 
 Alias for `bank.setup(func)`
 
@@ -28,7 +28,7 @@ var bank = new MessageBank({
 });
 ```
 
-####options.config(options)
+####options.config(options:Object)
 
 Alias for `bank.config()`
 
@@ -41,7 +41,7 @@ var bank = new MessageBank({
 });
 ```
 
-###Bank().setup(callback)
+###Bank().setup(callback:Function)
 
 Calls callback function immediatly with MessageBank instance as function context.  Inert function by default, provides entry point additional setup behavior not default to MessageBox
 
@@ -49,13 +49,13 @@ Calls callback function immediatly with MessageBank instance as function context
 bank.setup(function() { });
 ```
 
-###Bank().config(type, config)
+###Bank().config(type:String, config:Object)
 
-Also: `Bank().config(config)` `Bank().config([config])`
+Also: `Bank().config(config:Object)` `Bank().config(config:ObjectArray)`
 
 Method for configuring how dispatched data is handled for specific dispatch type.  Currently only defines transform config option, but this is a good place to enter custom configuration to be used in a custom parse function.
 
-####config.transform(callback)
+####config.transform(callback:Function)
 
 By default transform config is called with data and options as arguments during the parse phase of a dispatch call.
 
@@ -68,8 +68,8 @@ bank.config('SUPER', {
 });
 ```
 
-###Bank().dispatch(type, data, options)
-Also: `Bank().dispatch(dispatch)` `Bank().dispatch([dispatch])`
+###Bank().dispatch(type:String, data:Object, options:Object)
+Also: `Bank().dispatch(dispatch:Object)` `Bank().dispatch(dispatch:ObjectArray)`
 
 Dispatches a payload of data to the MessageBank, any subscriptions matching the payload type will be called.
 
@@ -77,9 +77,11 @@ Dispatches a payload of data to the MessageBank, any subscriptions matching the 
 bank.dispatch('SUPER', { duper: true }, { isNonsense: true });
 ```
 
-###Bank().subscribe(type, callback, options)
+###Bank().subscribe(type:String, callback:Function, options:Object)
 
 Subscribe to a specific type of dispatch payload, if previous payload exists callback will be called immediately.  Subscribe returns an id that can used to unsubscribe later.
+
+Subscribing to the `*` or `ALL` type will respond to all dispatches.  `Bank().subscribe(callback:Function, opts:Options)` will do the same.
 
 ```js
 bank.subscribe('SUPER', function(data, opts) {
@@ -97,7 +99,7 @@ bank.subscribe('SUPER', function(data, opts) {
 }, { immediate: false });
 ```
 
-###Bank().unsubscribe(id)
+###Bank().unsubscribe(id:Integer)
 
 Unsubscribe from a dispatch type using subscription ID returned when defining a subscription.
 
@@ -108,6 +110,6 @@ var id = bank.subscribe('SUPER', function() {
 });
 ```
 
-###Bank().parse(type, data, options)
+###Bank().parse(type:String, data:Object, options:Object)
 
 Internal function for manipulating dispatched data expecting a result of `{ data: {}, options: {} }`  By default parse runs any transform configs, but it can be overwriten for custom behavior.
