@@ -2,7 +2,7 @@
   "name": "message-bank",
   "description": "Subscribable message bank",
   "homepage": "https://github.com/krambuhl/message-bank",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
   "scripts": {
     "test": "tape tests/*.js",
